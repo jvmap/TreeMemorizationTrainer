@@ -1,0 +1,127 @@
+{
+  "answer": "d4",
+  "replies": [
+    {
+      "reply": "d5",
+      "answer": "Bf4",
+      "replies": [
+        {
+          "reply": "Nc6",
+          "answer": "Nc3",
+          "replies": [
+            {
+              "reply": "Nf6",
+              "answer": "Nb5"
+            },
+            {
+              "reply": "e6",
+              "answer": "e3"
+            },
+            {
+              "reply": "Bf5",
+              "answer": "e4"
+            },
+            {
+              "reply": "a6",
+              "answer": "e3"
+            }
+          ]
+        },
+        {
+          "reply": "Nf6",
+          "answer": "Nc3",
+          "replies": [
+            {
+              "reply": "Nc6",
+              "answer": "Nb5"
+            },
+            {
+              "reply": "e6",
+              "answer": "e3"
+            },
+            {
+              "reply": "Bf5",
+              "answer": "e3"
+            },
+            {
+              "reply": "a6",
+              "answer": "e3"
+            }
+          ]
+        },
+        {
+          "reply": "e6",
+          "answer": "Nf3"
+        },
+        {
+          "reply": "Bf5",
+          "answer": "Nf3"
+        }
+      ]
+    },
+    {
+      "reply": "Nf6",
+      "answer": "Bf4",
+      "replies": [
+        {
+          "reply": "g6",
+          "answer": "Nc3",
+          "replies": [
+            {
+              "reply": "Bg7",
+              "answer": "e4"
+            },
+            {
+              "reply": "d6",
+              "answer": "e4"
+            }
+          ]
+        },
+        {
+          "reply": "d5",
+          "answer": "Nc3",
+          "replies": [
+            {
+              "reply": "Nc6",
+              "answer": "Nb5"
+            },
+            {
+              "reply": "e6",
+              "answer": "e3"
+            },
+            {
+              "reply": "Bf5",
+              "answer": "e3"
+            },
+            {
+              "reply": "a6",
+              "answer": "e3"
+            }
+          ]
+        },
+        {
+          "reply": "e6",
+          "answer": "e3"
+        },
+        {
+          "reply": "d6",
+          "answer": "Nf3"
+        }
+      ]
+    },
+    {
+      "reply": "e6",
+      "answer": "Bf4",
+      "replies": [
+        {
+          "reply": "*",
+          "answer": "e3"
+        }
+      ]
+    },
+    {
+      "reply": "e5",
+      "answer": "dxe5"
+    }
+  ]
+}
