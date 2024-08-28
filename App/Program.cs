@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using Newtonsoft.Json;
 
 namespace App
 {
@@ -6,15 +6,14 @@ namespace App
     {
         static int Main(string[] args)
         {
-            if (args.Length != 2)
+            if (args.Length != 1)
             {
-                Console.WriteLine($"Usage: {args[0]} <filename.json>");
+                Console.WriteLine("Usage: App <filename.json>");
                 return 2;
             }
-            string fileName = args[1];
-            using Stream utf8Json = File.OpenRead(fileName);
-            DecisionTreeRootNode? tree = JsonSerializer
-                .Deserialize<DecisionTreeRootNode>(utf8Json);
+            string fileName = args[0];
+            string jsonString = File.ReadAllText(fileName);
+            DecisionTreeRootNode? tree = JsonConvert.DeserializeObject<DecisionTreeRootNode>(jsonString);
             if (tree == null)
             {
                 Console.WriteLine("Empty decision tree.");
