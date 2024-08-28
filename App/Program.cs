@@ -19,7 +19,13 @@ namespace App
                 Console.WriteLine("Empty decision tree.");
                 return 2;
             }
-            return Walk(tree);
+            int result;
+            do
+            {
+                result = Walk(tree);
+                Console.WriteLine();
+            } while (result >= 0);
+            return result;
         }
 
         private static int Walk(DecisionTreeRootNode rootNode)
