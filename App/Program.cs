@@ -20,21 +20,29 @@ namespace App
                 return 2;
             }
             int result;
+            Stack<DecisionTreeRootNode> path = [];
             do
             {
-                result = Walk(tree);
+                result = Walk(tree, path);
                 Console.WriteLine();
             } while (result >= 0);
             return result;
         }
 
-        private static int Walk(DecisionTreeRootNode rootNode)
+        private static int Walk(
+            DecisionTreeRootNode rootNode, 
+            Stack<DecisionTreeRootNode> path)
         {
             Console.WriteLine("How do you start?");
-            return HandleUserInput(rootNode);
+            path.Push(rootNode);
+            int result = HandleUserInput(rootNode, path);
+            path.Clear();
+            return result;
         }
 
-        private static int HandleUserInput(DecisionTreeRootNode node)
+        private static int HandleUserInput(
+            DecisionTreeRootNode node, 
+            Stack<DecisionTreeRootNode> path)
         {
             string? userInput = Console.ReadLine();
             if (userInput == null)
@@ -44,7 +52,7 @@ namespace App
             }
             if (userInput == node.Answer)
             {
-                return Walk(node.Replies);
+                return Walk(node.Replies, path);
             }
             else
             {
@@ -53,16 +61,35 @@ namespace App
             }
         }
 
-        private static int Walk(List<DecisionTreeNode> replies)
+        private static int Walk(
+            List<DecisionTreeNode> replies,
+            Stack<DecisionTreeRootNode> path)
         {
             if (replies.Count == 0)
             {
                 Console.WriteLine("Correct.");
-                return 0;
+                return PruneTree(path);
             }
             DecisionTreeNode node = replies[Random.Shared.Next(replies.Count)];
+            path.Push(node);
             Console.WriteLine(node.Reply + ". What now?");
-            return HandleUserInput(node);
+            return HandleUserInput(node, path);
+        }
+
+        private static int PruneTree(Stack<DecisionTreeRootNode> path)
+        {
+            DecisionTreeRootNode? current;
+            do
+            {
+                DecisionTreeRootNode itemToRemove = path.Pop();
+                if (!path.TryPeek(out current))
+                {
+                    Console.WriteLine("Completed");
+                    return -1;
+                }
+                current.Replies.Remove((DecisionTreeNode)itemToRemove);
+            } while (current.Replies.Count == 0);
+            return 0;
         }
     }
 }

@@ -19,7 +19,13 @@
             },
             {
               "reply": "Bf5",
-              "answer": "e4"
+              "answer": "e4",
+              "replies": [
+                {
+                  "reply": "dxe4",
+                  "answer": "d5"
+                }
+              ]
             },
             {
               "reply": "a6",
@@ -105,7 +111,7 @@
         },
         {
           "reply": "d6",
-          "answer": "Nf3"
+          "answer": "Nc3"
         }
       ]
     },

@@ -9,4 +9,9 @@ namespace App;
 internal class DecisionTreeNode : DecisionTreeRootNode
 {
     public string Reply { get; set; } = PLACEHOLDER;
+
+    public override string ToString()
+    {
+        return $"{Reply} {Answer}";
+    }
 }
