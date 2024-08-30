@@ -2,7 +2,7 @@
   "profiles": {
     "App": {
       "commandName": "Project",
-      "commandLineArgs": "..\\..\\..\\Data\\london-jobava-barry.json"
+      "commandLineArgs": "..\\..\\..\\Data\\london-jobava-barry-catalan.json"
     }
   }
 }

@@ -117,7 +117,13 @@
     },
     {
       "reply": "e6",
-      "answer": "Bf4"
+      "answer": "c4",
+      "replies": [
+        {
+          "reply": "Nf6",
+          "answer": "g3"
+        }
+      ]
     },
     {
       "reply": "e5",
