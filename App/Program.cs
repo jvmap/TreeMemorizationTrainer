@@ -33,11 +33,24 @@ namespace App
             DecisionTreeRootNode rootNode, 
             Stack<DecisionTreeRootNode> path)
         {
+            int count = CountOptions(rootNode);
+            Console.WriteLine($"There are {count} challenges remaining.");
             Console.WriteLine("How do you start?");
             path.Push(rootNode);
             int result = HandleUserInput(rootNode, path);
             path.Clear();
             return result;
+        }
+
+        private static int CountOptions(DecisionTreeRootNode rootNode)
+        {
+            if (rootNode.Replies.Count == 0) return 1;
+            int options = 0;
+            foreach (var reply in rootNode.Replies)
+            {
+                options += CountOptions(reply);
+            }
+            return options;
         }
 
         private static int HandleUserInput(
