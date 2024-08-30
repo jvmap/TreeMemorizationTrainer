@@ -84,7 +84,8 @@ namespace App
                 DecisionTreeRootNode itemToRemove = path.Pop();
                 if (!path.TryPeek(out current))
                 {
-                    Console.WriteLine("Completed");
+                    Console.WriteLine();
+                    Console.WriteLine("Completed!");
                     return -1;
                 }
                 current.Replies.Remove((DecisionTreeNode)itemToRemove);
