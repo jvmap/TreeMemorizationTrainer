@@ -20,10 +20,11 @@ namespace App
                 return 2;
             }
             int result;
+            int mistakes = 0;
             Stack<DecisionTreeRootNode> path = [];
             do
             {
-                result = Walk(tree, path);
+                result = Walk(tree, path, ref mistakes);
                 Console.WriteLine();
             } while (result >= 0);
             return result;
@@ -31,13 +32,14 @@ namespace App
 
         private static int Walk(
             DecisionTreeRootNode rootNode, 
-            Stack<DecisionTreeRootNode> path)
+            Stack<DecisionTreeRootNode> path,
+            ref int mistakes)
         {
             int count = CountOptions(rootNode);
             Console.WriteLine($"There are {count} challenges remaining.");
             Console.WriteLine("How do you start?");
             path.Push(rootNode);
-            int result = HandleUserInput(rootNode, path);
+            int result = HandleUserInput(rootNode, path, ref mistakes);
             path.Clear();
             return result;
         }
@@ -55,7 +57,8 @@ namespace App
 
         private static int HandleUserInput(
             DecisionTreeRootNode node, 
-            Stack<DecisionTreeRootNode> path)
+            Stack<DecisionTreeRootNode> path,
+            ref int mistakes)
         {
             string? userInput = Console.ReadLine();
             if (userInput == null)
@@ -65,31 +68,33 @@ namespace App
             }
             if (userInput == node.Answer)
             {
-                return Walk(node.Replies, path);
+                return Walk(node.Replies, path, ref mistakes);
             }
             else
             {
                 Console.WriteLine($"Wrong! {node.Answer} was correct.");
+                mistakes++;
                 return 1;
             }
         }
 
         private static int Walk(
             List<DecisionTreeNode> replies,
-            Stack<DecisionTreeRootNode> path)
+            Stack<DecisionTreeRootNode> path,
+            ref int mistakes)
         {
             if (replies.Count == 0)
             {
                 Console.WriteLine("Correct.");
-                return PruneTree(path);
+                return PruneTree(path, mistakes);
             }
             DecisionTreeNode node = replies[Random.Shared.Next(replies.Count)];
             path.Push(node);
             Console.WriteLine(node.Reply + ". What now?");
-            return HandleUserInput(node, path);
+            return HandleUserInput(node, path, ref mistakes);
         }
 
-        private static int PruneTree(Stack<DecisionTreeRootNode> path)
+        private static int PruneTree(Stack<DecisionTreeRootNode> path, int mistakes)
         {
             DecisionTreeRootNode? current;
             do
@@ -99,6 +104,7 @@ namespace App
                 {
                     Console.WriteLine();
                     Console.WriteLine("Completed!");
+                    Console.WriteLine($"{mistakes} mistakes were made.");
                     return -1;
                 }
                 current.Replies.Remove((DecisionTreeNode)itemToRemove);
