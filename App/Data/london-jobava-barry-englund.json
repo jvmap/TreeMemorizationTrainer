@@ -121,7 +121,17 @@
     },
     {
       "reply": "e5",
-      "answer": "dxe5"
+      "answer": "dxe5",
+      "replies": [
+        {
+          "reply": "Nc6",
+          "answer": "e4"
+        },
+        {
+          "reply": "d6",
+          "answer": "Bf4"
+        }
+      ]
     }
   ]
 }
